@@ -13,5 +13,9 @@ public class text : MonoBehaviour
         instructions.text = "Hello";
     }
 
+    public void changeText()
+    {
+
+    }
 
 }
