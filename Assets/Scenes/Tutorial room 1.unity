@@ -364,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &490496480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490496479}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 740eb73281f25554db8ce6c087b7ec88, type: 3}
   m_Name: 
@@ -648,8 +648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64622adb3fe918e4e8df9e1383111a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  dashSpeed: 10
+  moveSpeed: 3.5
+  dashSpeed: 7
   player: {fileID: 1208423330}
 --- !u!61 &1208423329
 BoxCollider2D:
@@ -830,6 +830,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1666255870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6841090517365591276, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+  m_PrefabInstance: {fileID: 1410169215564858091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1153181747007704607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -898,9 +903,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2638462820217511029, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: on
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638462820217511029, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: turret
+      value: 
+      objectReference: {fileID: 1666255870}
+    - target: {fileID: 5018427218335726485, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841090517365591276, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: m_Name
       value: tutorial turret 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841090517365591276, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8841960145156896288, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: m_RootOrder

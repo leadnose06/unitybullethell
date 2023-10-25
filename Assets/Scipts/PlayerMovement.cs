@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float dashEnd;
     private bool dashReady;
     private float dashWhen;
+    private SpriteRenderer square;
+    private float transparency = 1f;
 
     public Rigidbody2D player;
 
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         dash = false;
         dashReady = true;
         player.position = new Vector2(0, 0);
+        square = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         {
             dash = false;
             immune = false;
+            transparency = 1f;
+            square.color = new Color(square.color.r, square.color.g, square.color.b, transparency);
         }
         if (!dash)
         {
@@ -55,6 +61,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dash)
         {
+            if(transparency>0.4f && dashEnd - Time.time > 0.2f)
+            {
+                transparency -= 0.15f;
+            }else if(transparency < 1f && dashEnd - Time.time <= 0.075f)
+            {
+                transparency += 0.15f;
+            }
+            square.color = new Color(square.color.r, square.color.g, square.color.b, transparency);
             movement = new Vector2(dashx, dashy).normalized;
             player.velocity = movement * dashSpeed;
         }
@@ -76,8 +90,22 @@ public class PlayerMovement : MonoBehaviour
     {
         dashx = Input.GetAxisRaw("Horizontal");
         dashy = Input.GetAxisRaw("Vertical");
-        return Time.time+0.2f;
+        return Time.time+0.3f;
     }
-    
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            SceneManager.LoadScene(0);
+
+        } else if (collision.gameObject.tag == "Bullet" && !immune)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+
+
+
 }
