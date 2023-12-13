@@ -33,10 +33,9 @@ public class turretCode : MonoBehaviour
     {
         if (on)
         {
-            /*Vector3 targetPosition = turret.transform.position - target.transform.position;
-            float targetRotation = Mathf.Atan(targetPosition.y / targetPosition.x);
-            turret.transform.eulerAngles = new Vector3(0f,0f,targetRotation);
-            turret.transform.rotation = Quaternion.Slerp(Quaternion.Euler(target.transform.position.x, -90f, 0f), Quaternion.LookRotation(target.transform.position), 2f * Time.deltaTime);*/
+            Vector3 dir = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle+90, Vector3.forward);
 
 
 

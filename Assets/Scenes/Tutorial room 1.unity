@@ -1081,6 +1081,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2264656663402511313, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2638462820217511029, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: on
       value: 1
@@ -1093,6 +1097,14 @@ PrefabInstance:
       propertyPath: turret
       value: 
       objectReference: {fileID: 1666255870}
+    - target: {fileID: 2638462820217511029, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: shooting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018427218335726485, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5018427218335726485, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: m_IsTrigger
       value: 0

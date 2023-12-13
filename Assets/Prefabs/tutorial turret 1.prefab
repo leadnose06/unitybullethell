@@ -184,3 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e76074be10c5b248ab95ba651afac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
+  shooting: 0
+  turret: {fileID: 0}
+  target: {fileID: 0}
