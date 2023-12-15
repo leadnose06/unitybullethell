@@ -11,6 +11,7 @@ public class SpawnerCode : MonoBehaviour
     private float timer = 0f;
     private GameObject SpawnedBullet;
     public GameObject target;
+    private Vector3 dir;
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
@@ -21,13 +22,19 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float firingRate;
     [SerializeField] private float initAngle;
     [SerializeField] private float rotationSpeed;
-    
+    [SerializeField] private GameObject attached;
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
+        //transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
+        if (attached)
+        {
+            transform.position = attached.transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -41,14 +48,21 @@ public class SpawnerCode : MonoBehaviour
                 transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationSpeed);
             }else if(spawnerType == SpawnerType.Target)
             {
-                Quaternion rotation = Quaternion.LookRotation(target.transform.position - transform.position, transform.TransformDirection(Vector3.forward));
-                transform.rotation = new Quaternion(0f, 0f, rotation.z, rotation.w);
+                dir = target.transform.position - transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+                //Quaternion rotation = Quaternion.LookRotation(target.transform.position - transform.position, transform.TransformDirection(Vector3.forward));
+                //transform.rotation = new Quaternion(0f, 0f, rotation.z, rotation.w);
             }
             if(timer >= firingRate)
             {
                 fire();
                 timer = 0f;
             }
+        }
+        if (attached)
+        {
+            transform.position = attached.transform.position;
         }
     }
 
@@ -57,8 +71,9 @@ public class SpawnerCode : MonoBehaviour
         if (bullet)
         {
             SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            SpawnedBullet.GetComponent<BulletCode>().speed = speed;
+            SpawnedBullet.GetComponent<BulletCode>().speed = speed/-100;
             SpawnedBullet.transform.rotation = transform.rotation;
+            SpawnedBullet.SetActive(true);
         }
     }
 }
