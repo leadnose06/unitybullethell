@@ -12,6 +12,7 @@ public class SpawnerCode : MonoBehaviour
     private GameObject SpawnedBullet;
     public GameObject target;
     private Vector3 dir;
+    private float adjFireRate;
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
@@ -23,6 +24,7 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float initAngle;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject attached;
+    [SerializeField] private float maxDelay;
 
 
 
@@ -30,6 +32,7 @@ public class SpawnerCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        adjFireRate = firingRate + Random.value * maxDelay*3;
         //transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
         if (attached)
         {
@@ -54,10 +57,11 @@ public class SpawnerCode : MonoBehaviour
                 //Quaternion rotation = Quaternion.LookRotation(target.transform.position - transform.position, transform.TransformDirection(Vector3.forward));
                 //transform.rotation = new Quaternion(0f, 0f, rotation.z, rotation.w);
             }
-            if(timer >= firingRate)
+            if(timer >= adjFireRate)
             {
                 fire();
                 timer = 0f;
+                adjFireRate = firingRate + Random.value * maxDelay;
             }
         }
         if (attached)

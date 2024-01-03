@@ -95,11 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            SceneManager.LoadScene(0);
-
-        } else if (collision.gameObject.tag == "Bullet" && !immune)
+        if (collision.gameObject.tag == "Bullet" && !immune)
         {
             SceneManager.LoadScene(0);
         }

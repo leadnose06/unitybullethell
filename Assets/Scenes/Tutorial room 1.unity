@@ -864,6 +864,10 @@ PrefabInstance:
       value: Spawner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: on
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1208423327}
@@ -871,6 +875,10 @@ PrefabInstance:
       propertyPath: attached
       value: 
       objectReference: {fileID: 1902152708}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: maxDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd032e85df8579f4984a1302961564dd, type: 3}
 --- !u!1 &1520277012
@@ -961,6 +969,10 @@ PrefabInstance:
     - target: {fileID: 2638462820217511029, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: shooting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018427218335726485, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841090517365591276, guid: 60ba46c6159104a4aaa11e383ea8a403, type: 3}
       propertyPath: m_Name
@@ -1332,5 +1344,9 @@ PrefabInstance:
       propertyPath: attached
       value: 
       objectReference: {fileID: 1666255870}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: maxDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd032e85df8579f4984a1302961564dd, type: 3}
