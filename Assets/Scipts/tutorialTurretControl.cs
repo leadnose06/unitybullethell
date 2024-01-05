@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class tutorialTurretControl : MonoBehaviour
 {
+    public float duration;
+    private float timer;
     public GameObject turret;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,10 @@ public class tutorialTurretControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer >= duration)
+        {
+
+        }
     }
 }
