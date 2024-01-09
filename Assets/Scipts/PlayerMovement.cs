@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private float dashWhen;
     private SpriteRenderer square;
     private float transparency = 1f;
+    public float startx = 0;
+    public float starty = 0;
+    public bool nobullet = false;
 
     public Rigidbody2D player;
 
@@ -25,13 +28,14 @@ public class PlayerMovement : MonoBehaviour
         immune = false;
         dash = false;
         dashReady = true;
-        player.position = new Vector2(0, 0);
+        player.position = new Vector2(startx, starty);
         square = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetButtonDown("Jump") && dashReady)
         {
             dashEnd = dashControl();
@@ -59,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (nobullet)
+        {
+            immune = true;
+        }
         if (dash)
         {
             if(transparency>0.4f && dashEnd - Time.time > 0.2f)
@@ -93,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         return Time.time+0.3f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet" && !immune)
         {

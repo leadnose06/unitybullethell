@@ -16,14 +16,15 @@ public class BulletCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.up * speed;
+        transform.position += transform.up * speed * Time.deltaTime;
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Wall")
         {
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
