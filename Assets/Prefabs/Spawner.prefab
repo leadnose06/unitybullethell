@@ -45,14 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  target: {fileID: 0}
-  bullet: {fileID: 3908590075374903516, guid: 72b394d70d9a18b4198398666840a3b0, type: 3}
+  target: {fileID: 6340600304880723880, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
+  bullet: {fileID: 0}
   speed: 1
   spawnerType: 1
   firingRate: 2
   initAngle: 0
   rotationSpeed: 0
   attached: {fileID: 0}
+  offsetX: 0
+  offsetY: 0
+  maxDelay: 0
 --- !u!212 &8289050700739603713
 SpriteRenderer:
   m_ObjectHideFlags: 0

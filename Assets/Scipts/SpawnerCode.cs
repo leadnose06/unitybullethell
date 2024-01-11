@@ -17,6 +17,7 @@ public class SpawnerCode : MonoBehaviour
     [Header("Bullet Attributes")]
     public GameObject bullet;
     public float speed;
+    public bool lockedAngle;
 
     [Header("Spawner Attributes")]
     [SerializeField] private SpawnerType spawnerType;
@@ -24,6 +25,8 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float initAngle;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject attached;
+    [SerializeField] private float offsetX = 0;
+    [SerializeField] private float offsetY = 0;
     [SerializeField] private float maxDelay;
 
 
@@ -66,7 +69,7 @@ public class SpawnerCode : MonoBehaviour
         }
         if (attached)
         {
-            transform.position = attached.transform.position;
+            transform.position = attached.transform.position+new Vector3(offsetX, offsetY);
         }
     }
 
@@ -74,10 +77,20 @@ public class SpawnerCode : MonoBehaviour
     {
         if (bullet)
         {
-            SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            SpawnedBullet.GetComponent<BulletCode>().speed = speed/-100;
-            SpawnedBullet.transform.rotation = transform.rotation;
-            SpawnedBullet.SetActive(true);
+            if (lockedAngle)
+            {
+                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
+                SpawnedBullet.SetActive(true);
+            }
+            else
+            {
+                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                SpawnedBullet.GetComponent<BulletCode>().speed = speed / -100;
+                SpawnedBullet.transform.rotation = transform.rotation;
+                SpawnedBullet.SetActive(true);
+            }
         }
     }
 }

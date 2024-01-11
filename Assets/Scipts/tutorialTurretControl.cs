@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class tutorialTurretControl : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class tutorialTurretControl : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= duration)
         {
-
+            SceneManager.LoadScene(1);
         }
     }
 }
