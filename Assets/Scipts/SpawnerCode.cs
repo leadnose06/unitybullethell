@@ -43,6 +43,11 @@ public class SpawnerCode : MonoBehaviour
         }
     }
 
+    public void turnOn()
+    {
+        on = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

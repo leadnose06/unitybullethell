@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e68819e1f53424a94539d2c241bc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 15
   turret: {fileID: 1666255870}
 --- !u!4 &1357899401
 Transform:
@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: speed
       value: 666
       objectReference: {fileID: 0}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2019074911}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: target
       value: 
@@ -1351,6 +1355,10 @@ PrefabInstance:
       propertyPath: speed
       value: 666
       objectReference: {fileID: 0}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2019074911}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: target
       value: 
