@@ -43,9 +43,16 @@ public class SpawnerCode : MonoBehaviour
         }
     }
 
-    public void turnOn()
+    public void turnOnOrOff()
     {
-        on = true;
+        if (on)
+        {
+            on = true;
+        }
+        else
+        {
+            on = false;
+        }
     }
 
     // Update is called once per frame
