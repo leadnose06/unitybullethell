@@ -13,6 +13,7 @@ public class SpawnerCode : MonoBehaviour
     public GameObject target;
     private Vector3 dir;
     private float adjFireRate;
+    private float fullTimer;
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
@@ -45,7 +46,7 @@ public class SpawnerCode : MonoBehaviour
 
     public void turnOnOrOff()
     {
-        if (on)
+        if (!on)
         {
             on = true;
         }
@@ -61,6 +62,7 @@ public class SpawnerCode : MonoBehaviour
         if (on)
         {
             timer += Time.deltaTime;
+            fullTimer += Time.deltaTime;
             if(spawnerType == SpawnerType.Spin)
             {
                 transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationSpeed);
@@ -89,11 +91,24 @@ public class SpawnerCode : MonoBehaviour
     {
         if (bullet)
         {
-            if (lockedAngle)
+            if (lockedAngle && spawnerType == SpawnerType.Straight)
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
                 SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
+                SpawnedBullet.SetActive(true);
+            }
+            else if(lockedAngle && spawnerType == SpawnerType.Spin)
+            {
+                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360*fullTimer*2)%360;
+                SpawnedBullet.SetActive(true);
+            }
+            else if(lockedAngle && spawnerType == SpawnerType.Target){
+                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = attached.GetComponent<boss1Code>().bossTargetAngle;
                 SpawnedBullet.SetActive(true);
             }
             else

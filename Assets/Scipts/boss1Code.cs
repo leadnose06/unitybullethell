@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class boss1Code : MonoBehaviour
 {
-    private float initAngle;
+    public float bossTargetAngle;
     private float vx;
     private float vy;
     public float speed;
@@ -25,9 +25,9 @@ public class boss1Code : MonoBehaviour
     void Start()
     {
         timer = 0;
-        initAngle = Random.value * 2;
-        vx = Mathf.Cos(initAngle);
-        vy = Mathf.Sin(initAngle);
+        bossTargetAngle = Random.value * 2;
+        vx = Mathf.Cos(bossTargetAngle);
+        vy = Mathf.Sin(bossTargetAngle);
         boss1.velocity = new Vector2(speed * vx, speed * vy);
     }
 
@@ -35,12 +35,14 @@ public class boss1Code : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        timer2 += Time.deltaTime;
-        if(timer >= phase1Duration && phase1)
+        timer2 += Time.deltaTime; 
+        bossTargetAngle = Mathf.Atan2((gameObject.transform.position.y - player.transform.position.y), (gameObject.transform.position.x - player.transform.position.x));
+        if (timer >= phase1Duration && phase1)
         {
             phase1 = false;
             phase2 = true;
             phase2Move();
+            //gameObject.GetComponent<Rigidbody2D>().sharedMaterial = normal;
         }
         if (timer >= phase2Duration && phase2)
         {
@@ -51,7 +53,6 @@ public class boss1Code : MonoBehaviour
                 phase12Spawners[i].GetComponent<SpawnerCode>().turnOnOrOff();
                 phase3Spawners[i].GetComponent<SpawnerCode>().turnOnOrOff();
             }
-            gameObject.GetComponent<Rigidbody2D>().sharedMaterial = normal;
             phase2Move();
             
         }
@@ -65,10 +66,12 @@ public class boss1Code : MonoBehaviour
 
     private void phase2Move()
     {
-        initAngle = Mathf.PI+Mathf.Atan((gameObject.transform.position.y - player.transform.position.y) / (gameObject.transform.position.x - player.transform.position.x));
-        vx = Mathf.Cos(initAngle);
-        vy = Mathf.Sin(initAngle);
-        boss1.velocity = new Vector2(speed * vx*0.75f, speed * vy*0.75f);
+        bossTargetAngle = Mathf.Atan2((gameObject.transform.position.y - player.transform.position.y), (gameObject.transform.position.x - player.transform.position.x));
+        Debug.Log(Mathf.Rad2Deg*bossTargetAngle);
+        vx = Mathf.Cos(bossTargetAngle);
+        vy = Mathf.Sin(bossTargetAngle);
+        //boss1.velocity = Vector2.MoveTowards(boss1.transform.position, player.transform.position, speed);
+        boss1.velocity = new Vector2(speed * -vx, speed * -vy);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,11 +81,11 @@ public class boss1Code : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(0);
         }
-        if (collision.gameObject.tag == "Boundary" && (phase2 || phase3))
+        /*if (collision.gameObject.tag == "Boundary" && (phase2 || phase3))
         {
             boss1.velocity = new Vector2(0, 0);
             phase2Move();
-        }
+        }*/
     }
 
 }

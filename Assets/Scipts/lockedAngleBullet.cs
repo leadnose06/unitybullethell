@@ -18,6 +18,6 @@ public class lockedAngleBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += movement* speed * Time.deltaTime;
+        transform.position += (movement* speed * Time.deltaTime);
     }
 }
