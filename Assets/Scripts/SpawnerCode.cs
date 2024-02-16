@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerCode : MonoBehaviour
 {
-    enum SpawnerType { Straight, Target, Spin}
+    enum SpawnerType { Straight, Target, Spin, Circle}
 
 
     public bool on;
@@ -29,6 +29,8 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float offsetX = 0;
     [SerializeField] private float offsetY = 0;
     [SerializeField] private float maxDelay;
+    [SerializeField] private float circleBullets;
+    [SerializeField] private float initDelay;
 
 
 
@@ -36,7 +38,8 @@ public class SpawnerCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        adjFireRate = firingRate + Random.value * maxDelay*3;
+        adjFireRate = firingRate + initDelay + Random.value * maxDelay*3;
+        fullTimer = initAngle / 360f;
         //transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
         if (attached)
         {
@@ -62,7 +65,11 @@ public class SpawnerCode : MonoBehaviour
         if (on)
         {
             timer += Time.deltaTime;
-            fullTimer += Time.deltaTime;
+            fullTimer += Time.deltaTime/(rotationSpeed+0.01f);
+            if (fullTimer >= 1)
+            {
+                fullTimer = 0;
+            }
             if(spawnerType == SpawnerType.Spin)
             {
                 transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationSpeed);
@@ -98,18 +105,29 @@ public class SpawnerCode : MonoBehaviour
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
                 SpawnedBullet.SetActive(true);
             }
-            else if(lockedAngle && spawnerType == SpawnerType.Spin)
+            else if (lockedAngle && spawnerType == SpawnerType.Spin)
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
                 SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
-                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360*fullTimer*2)%360;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360 * fullTimer);
                 SpawnedBullet.SetActive(true);
             }
-            else if(lockedAngle && spawnerType == SpawnerType.Target){
+            else if (lockedAngle && spawnerType == SpawnerType.Target)
+            {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
                 SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = attached.GetComponent<boss1Code>().bossTargetAngle;
                 SpawnedBullet.SetActive(true);
+            }
+            else if (lockedAngle && spawnerType == SpawnerType.Circle)
+            {
+                for(int i=0; i<circleBullets; i++) 
+                {
+                    SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle+(360/circleBullets)*i;
+                    SpawnedBullet.SetActive(true);
+                }
             }
             else
             {

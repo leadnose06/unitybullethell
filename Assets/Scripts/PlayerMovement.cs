@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public float startx = 0;
     public float starty = 0;
     public bool nobullet = false;
+    private float extraSafe = 0.2f;
+
 
     public Rigidbody2D player;
 
@@ -47,10 +49,14 @@ public class PlayerMovement : MonoBehaviour
         if (Time.time >= dashEnd && dash)
         {
             dash = false;
-            immune = false;
             transparency = 1f;
             square.color = new Color(square.color.r, square.color.g, square.color.b, transparency);
         }
+        if(Time.time >= dashEnd+extraSafe && immune)
+        {
+            immune = false;
+        }
+
         if (!dash)
         {
             movementInput();
