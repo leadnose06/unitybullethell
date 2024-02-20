@@ -111,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet" && !immune)
         {
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(0);
         }
     }

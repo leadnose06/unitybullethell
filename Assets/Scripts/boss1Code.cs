@@ -12,6 +12,7 @@ public class boss1Code : MonoBehaviour
     public Rigidbody2D boss1;
     public double phase1Duration;
     public double phase2Duration;
+    public double phase3Duration;
     private bool phase1 = true;
     private bool phase2 = false;
     private bool phase3 = false;
@@ -56,6 +57,11 @@ public class boss1Code : MonoBehaviour
             phase2Move();
             
         }
+        if(timer >= phase3Duration)
+        {
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            SceneManager.LoadScene(2);
+        }
         if ((gameObject.transform.position.x >= 15 || gameObject.transform.position.x <= -15 || gameObject.transform.position.y <= -7.5 || gameObject.transform.position.y >= 7.5) && !phase1 && timer2>=0.5)
         {
             phase2Move();
@@ -70,7 +76,6 @@ public class boss1Code : MonoBehaviour
         Debug.Log(Mathf.Rad2Deg*bossTargetAngle);
         vx = Mathf.Cos(bossTargetAngle);
         vy = Mathf.Sin(bossTargetAngle);
-        //boss1.velocity = Vector2.MoveTowards(boss1.transform.position, player.transform.position, speed);
         boss1.velocity = new Vector2(speed * -vx, speed * -vy);
     }
 
@@ -81,11 +86,6 @@ public class boss1Code : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(0);
         }
-        /*if (collision.gameObject.tag == "Boundary" && (phase2 || phase3))
-        {
-            boss1.velocity = new Vector2(0, 0);
-            phase2Move();
-        }*/
     }
 
 }

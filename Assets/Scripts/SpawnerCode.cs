@@ -23,7 +23,7 @@ public class SpawnerCode : MonoBehaviour
     [Header("Spawner Attributes")]
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate;
-    [SerializeField] private float initAngle;
+    [SerializeField] public float initAngle;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject attached;
     [SerializeField] private float offsetX = 0;
@@ -31,6 +31,7 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float maxDelay;
     [SerializeField] private float circleBullets;
     [SerializeField] private float initDelay;
+    [SerializeField] private bool triggered = false;
 
 
 
@@ -81,7 +82,7 @@ public class SpawnerCode : MonoBehaviour
                 //Quaternion rotation = Quaternion.LookRotation(target.transform.position - transform.position, transform.TransformDirection(Vector3.forward));
                 //transform.rotation = new Quaternion(0f, 0f, rotation.z, rotation.w);
             }
-            if(timer >= adjFireRate)
+            if(timer >= adjFireRate &! triggered)
             {
                 fire();
                 timer = 0f;
@@ -94,7 +95,7 @@ public class SpawnerCode : MonoBehaviour
         }
     }
 
-    private void fire()
+    public void fire()
     {
         if (bullet)
         {
