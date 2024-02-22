@@ -5,7 +5,7 @@ using UnityEngine;
 public class lockedAngleBullet : MonoBehaviour
 {
     public float speed;
-    private Vector2 spawnPoint;
+    public Vector2 spawnPoint;
     private Vector3 movement;
     public float angle;
     // Start is called before the first frame update
@@ -19,5 +19,12 @@ public class lockedAngleBullet : MonoBehaviour
     void Update()
     {
         transform.position += (movement* speed * Time.deltaTime);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

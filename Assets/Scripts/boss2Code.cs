@@ -8,7 +8,6 @@ public class boss2Code : MonoBehaviour
     public GameObject[] phase1Spawners;
     public GameObject[] phase2SpawnersSpam;
     public GameObject[] phase2SpawnersRing;
-    public GameObject[] phase2SpawnersLines;
     public double phase1Duration;
     public double phase2Duration;
     public double phase3Duration;
@@ -18,8 +17,6 @@ public class boss2Code : MonoBehaviour
     private bool phase3 = false;
     public double phase2RingFireRate;
     public double phase3SpamDuration;
-    public int phase3LineShots;
-    public double phase3LineFireRate;
     private double fireTimer;
 
     // Start is called before the first frame update
@@ -30,10 +27,6 @@ public class boss2Code : MonoBehaviour
             i.GetComponent<SpawnerCode>().turnOnOrOff();
         }
 
-        foreach (GameObject i in phase2SpawnersLines)
-        {
-            i.GetComponent<SpawnerCode>().initAngle = (int)(Random.value*365);
-        }
     }
 
     // Update is called once per frame
@@ -61,25 +54,25 @@ public class boss2Code : MonoBehaviour
             }
             fireTimer = 0;
 
-            foreach (GameObject i in phase1Spawners)
-            {
-                i.GetComponent<SpawnerCode>().turnOnOrOff();
-            }
             foreach (GameObject i in phase2SpawnersSpam)
             {
                 i.GetComponent<SpawnerCode>().turnOnOrOff();
             }
         }
-        if(timer >= phase3Duration)
+        if(timer >= phase3Duration && phase3)
         {
+
             foreach (GameObject i in phase1Spawners)
             {
                 i.GetComponent<SpawnerCode>().turnOnOrOff();
             }
+            fireTimer = 0;
+
             foreach (GameObject i in phase2SpawnersSpam)
             {
                 i.GetComponent<SpawnerCode>().turnOnOrOff();
             }
+            phase3 = false;
         }
         if(phase2 && fireTimer >= phase2RingFireRate)
         {
@@ -97,7 +90,7 @@ public class boss2Code : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
     }
 
