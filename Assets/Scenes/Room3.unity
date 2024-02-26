@@ -302,6 +302,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.67058825
       objectReference: {fileID: 0}
+    - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
+      propertyPath: maxH
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
+      propertyPath: maxV
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715289, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -454,10 +462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spam: {fileID: 937691610}
-  phase1Duration: 0
-  phase2Duration: 0
+  phase1Duration: 1
+  phase2Duration: 20
   phase3Duration: 0
-  phase1FireRate: 0.03
+  phase1FireRate: 0.04
+  phase2FireRate: 0.15
 --- !u!1001 &559777880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: speed
-      value: 600
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: bullet
@@ -669,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: firingRate
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: lockedAngle

@@ -8,6 +8,9 @@ public class lockedAngleBullet : MonoBehaviour
     public Vector2 spawnPoint;
     private Vector3 movement;
     public float angle;
+    public float maxH;
+    public float maxV;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,10 @@ public class lockedAngleBullet : MonoBehaviour
     void Update()
     {
         transform.position += (movement* speed * Time.deltaTime);
+        if(transform.position.x <= -maxH || transform.position.x >= maxH || transform.position.y <= -maxV || transform.position.y >= maxV)
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

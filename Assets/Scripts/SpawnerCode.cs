@@ -17,7 +17,7 @@ public class SpawnerCode : MonoBehaviour
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
-    public float speed;
+    public float speed = 1000f;
     public bool lockedAngle;
 
     [Header("Spawner Attributes")]
@@ -95,8 +95,12 @@ public class SpawnerCode : MonoBehaviour
         }
     }
 
-    public void fire()
+    public void fire(float spd = -1f)
     {
+        if(spd == -1f)
+        {
+            spd = speed;
+        }
         if (bullet)
         {
             if (lockedAngle && spawnerType == SpawnerType.Straight)

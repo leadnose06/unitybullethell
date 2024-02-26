@@ -17,7 +17,12 @@ public class boss3Code : MonoBehaviour
     private int ticker2 = 38;
     private float timer;
     public float phase1FireRate;
+    public float phase2FireRate;
     private float lastShot = 0;
+    private int gapCenter;
+    private float gapDelay = 0.7f;
+    private bool gapDecrease = false;
+    private float lineDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,7 @@ public class boss3Code : MonoBehaviour
             spamArray[i].GetComponent<SpawnerCode>().offsetY = spam.GetComponent<SpawnerCode>().offsetY-0.5f*i;
             spamArray[i].SetActive(true);
         }
+        lastShot = 0.1f;
 
     }
 
@@ -48,6 +54,68 @@ public class boss3Code : MonoBehaviour
                     ticker1 = 0;
                     ticker2 = 38;
                 }
+            }
+        }
+        if(timer >= phase1Duration && phase1)
+        {
+            phase1 = false;
+        }
+        if(timer >= phase1Duration + 1 && !phase2)
+        {
+            phase2 = true;
+            gapCenter = 17;
+            gapDelay = timer + 0.8f;
+            lineDelay = timer = 2.5f;
+            if (Random.value > 0.5f)
+            {
+                gapDecrease = true;
+            }
+        }
+        if (phase2)
+        {   
+            if(timer >= lineDelay)
+            {
+                lineDelay = timer + 2.5f;
+                for (int i = 0; i < 39; i++)
+                {
+                    spamArray[i].GetComponent<SpawnerCode>().fire();
+                }
+            }
+            if (timer >= lastShot + phase2FireRate)
+            {
+                for (int i = 0; i < 39; i++)
+                {
+                    if (!((i > gapCenter - 5) && (i < gapCenter + 5)))
+                    {
+                        spamArray[i].GetComponent<SpawnerCode>().fire();
+                    }
+                }
+                lastShot = timer;
+            }
+            
+            if(timer >= gapDelay)
+            {
+                if (Random.value > 0.8f)
+                {
+                    gapDecrease = !gapDecrease;
+                }
+                if(gapCenter-5 <= 1)
+                {
+                    gapDecrease = false;
+                }
+                if(gapCenter+5 >= 37)
+                {
+                    gapDecrease = true;
+                }
+                if (gapDecrease)
+                {
+                    gapCenter -= 2;
+                }
+                else
+                {
+                    gapCenter += 2;
+                }
+                gapDelay = timer + 0.8f;
             }
         }
     }
