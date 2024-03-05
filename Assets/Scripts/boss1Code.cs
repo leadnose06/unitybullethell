@@ -61,6 +61,7 @@ public class boss1Code : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(2);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
         }
         if ((gameObject.transform.position.x >= 15 || gameObject.transform.position.x <= -15 || gameObject.transform.position.y <= -7.5 || gameObject.transform.position.y >= 7.5) && !phase1 && timer2>=0.5)
         {
@@ -83,8 +84,7 @@ public class boss1Code : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

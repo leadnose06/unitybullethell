@@ -106,21 +106,21 @@ public class SpawnerCode : MonoBehaviour
             if (lockedAngle && spawnerType == SpawnerType.Straight)
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
                 SpawnedBullet.SetActive(true);
             }
             else if (lockedAngle && spawnerType == SpawnerType.Spin)
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360 * fullTimer);
                 SpawnedBullet.SetActive(true);
             }
             else if (lockedAngle && spawnerType == SpawnerType.Target)
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
                 SpawnedBullet.GetComponent<lockedAngleBullet>().angle = attached.GetComponent<boss1Code>().bossTargetAngle;
                 SpawnedBullet.SetActive(true);
             }
@@ -129,7 +129,7 @@ public class SpawnerCode : MonoBehaviour
                 for(int i=0; i<circleBullets; i++) 
                 {
                     SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = speed / -100;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
                     SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle+(360/circleBullets)*i;
                     SpawnedBullet.SetActive(true);
                 }
@@ -137,7 +137,7 @@ public class SpawnerCode : MonoBehaviour
             else
             {
                 SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<BulletCode>().speed = speed / -100;
+                SpawnedBullet.GetComponent<BulletCode>().speed = spd / -100;
                 SpawnedBullet.transform.rotation = transform.rotation;
                 SpawnedBullet.SetActive(true);
             }

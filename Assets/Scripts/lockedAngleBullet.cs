@@ -8,8 +8,8 @@ public class lockedAngleBullet : MonoBehaviour
     public Vector2 spawnPoint;
     private Vector3 movement;
     public float angle;
-    public float maxH;
-    public float maxV;
+    public float maxH = 20f;
+    public float maxV = 11.5f;
 
     // Start is called before the first frame update
     void Start()

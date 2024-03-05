@@ -388,7 +388,8 @@ MonoBehaviour:
   speed: 6
   boss1: {fileID: 344466698}
   phase1Duration: 5
-  phase2Duration: 5
+  phase2Duration: 10
+  phase3Duration: 15
   player: {fileID: 1233966770}
   phase12Spawners:
   - {fileID: 1704235358}
@@ -1525,6 +1526,14 @@ PrefabInstance:
     - target: {fileID: 4411567981211715285, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: m_Name
       value: Boss1Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
+      propertyPath: maxH
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
+      propertyPath: maxV
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715289, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: m_RootOrder

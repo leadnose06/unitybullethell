@@ -73,6 +73,10 @@ public class boss2Code : MonoBehaviour
                 i.GetComponent<SpawnerCode>().turnOnOrOff();
             }
             phase3 = false;
+
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            SceneManager.LoadScene(3);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(3));
         }
         if(phase2 && fireTimer >= phase2RingFireRate)
         {
@@ -89,8 +93,7 @@ public class boss2Code : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

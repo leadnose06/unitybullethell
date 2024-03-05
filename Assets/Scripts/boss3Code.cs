@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class boss3Code : MonoBehaviour
 {
@@ -75,17 +76,17 @@ public class boss3Code : MonoBehaviour
         {   
             if(timer >= lineDelay)
             {
-                lineDelay = timer + 2.5f;
+                lineDelay = timer + 3f;
                 for (int i = 0; i < 39; i++)
                 {
-                    spamArray[i].GetComponent<SpawnerCode>().fire();
+                    spamArray[i].GetComponent<SpawnerCode>().fire(700);
                 }
             }
             if (timer >= lastShot + phase2FireRate)
             {
                 for (int i = 0; i < 39; i++)
                 {
-                    if (!((i > gapCenter - 5) && (i < gapCenter + 5)))
+                    if (!((i > gapCenter - 6) && (i < gapCenter + 6)))
                     {
                         spamArray[i].GetComponent<SpawnerCode>().fire();
                     }
@@ -99,11 +100,11 @@ public class boss3Code : MonoBehaviour
                 {
                     gapDecrease = !gapDecrease;
                 }
-                if(gapCenter-5 <= 1)
+                if(gapCenter-6 <= 1)
                 {
                     gapDecrease = false;
                 }
-                if(gapCenter+5 >= 37)
+                if(gapCenter+6 >= 37)
                 {
                     gapDecrease = true;
                 }
@@ -117,6 +118,13 @@ public class boss3Code : MonoBehaviour
                 }
                 gapDelay = timer + 0.8f;
             }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
