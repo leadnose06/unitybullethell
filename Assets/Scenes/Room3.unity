@@ -463,8 +463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spam: {fileID: 937691610}
   phase1Duration: 1
-  phase2Duration: 20
-  phase3Duration: 0
+  phase2Duration: 3
+  phase3Duration: 20
   phase1FireRate: 0.04
   phase2FireRate: 0.15
 --- !u!1001 &559777880

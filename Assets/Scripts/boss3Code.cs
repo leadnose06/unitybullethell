@@ -24,6 +24,7 @@ public class boss3Code : MonoBehaviour
     private float gapDelay = 0.7f;
     private bool gapDecrease = false;
     private float lineDelay;
+    private float gapLength;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class boss3Code : MonoBehaviour
         {
             phase1 = false;
         }
-        if(timer >= phase1Duration + 1 && !phase2)
+        if(timer >= phase1Duration + 1 && !phase2 && !phase3)
         {
             phase2 = true;
             gapCenter = 17;
@@ -71,6 +72,14 @@ public class boss3Code : MonoBehaviour
             {
                 gapDecrease = true;
             }
+        }
+        if(timer >= phase2Duration && phase2)
+        {
+            phase2 = false;
+            phase3 = true;
+            gapDelay = timer + 0.5f;
+            gapLength = timer + 0.4f;
+
         }
         if (phase2)
         {   
@@ -117,6 +126,41 @@ public class boss3Code : MonoBehaviour
                     gapCenter += 2;
                 }
                 gapDelay = timer + 0.8f;
+            }
+        }
+        if (phase3)
+        {
+            if (timer >= lastShot + phase2FireRate)
+            {
+                for (int i = 0; i < 39; i++)
+                {
+                    if ((!((i > gapCenter - 5) && (i < gapCenter + 5))) || timer >= gapLength)
+                    {
+                        spamArray[i].GetComponent<SpawnerCode>().fire();
+                    }
+                }
+                lastShot = timer;
+            }
+            if (timer >= gapDelay)
+            {
+                if(gapCenter + 5 >= 37)
+                {
+                    gapCenter -= 8;
+                }
+                else if(gapCenter - 5 <= 1)
+                {
+                    gapCenter += 8;
+                }
+                else if (Random.value > 0.5)
+                {
+                    gapCenter += 8;
+                }
+                else
+                {
+                    gapCenter -= 8;
+                }
+                gapDelay = timer + 1.7f;
+                gapLength = timer + 1.5f;
             }
         }
     }
