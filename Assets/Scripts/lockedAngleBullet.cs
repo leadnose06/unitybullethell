@@ -8,6 +8,7 @@ public class lockedAngleBullet : MonoBehaviour
     public Vector2 spawnPoint;
     private Vector3 movement;
     public float angle;
+    public float facing = 0f;
     public float maxH = 20f;
     public float maxV = 11.5f;
 
@@ -16,6 +17,7 @@ public class lockedAngleBullet : MonoBehaviour
     {
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
         movement = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle));
+        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z + facing);
     }
 
     // Update is called once per frame

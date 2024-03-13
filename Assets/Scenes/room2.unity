@@ -390,7 +390,7 @@ MonoBehaviour:
   - {fileID: 1749510143}
   phase2SpawnersRing:
   - {fileID: 1019219454}
-  phase1Duration: 3
+  phase1Duration: 10
   phase2Duration: 20
   phase3Duration: 30
   phase2RingFireRate: 3.4

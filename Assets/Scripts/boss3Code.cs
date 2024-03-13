@@ -62,7 +62,7 @@ public class boss3Code : MonoBehaviour
         {
             phase1 = false;
         }
-        if(timer >= phase1Duration + 1 && !phase2 && !phase3)
+        if(timer >= phase1Duration + 1f && !phase2 && !phase3)
         {
             phase2 = true;
             gapCenter = 17;
