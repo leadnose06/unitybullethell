@@ -9,6 +9,7 @@ public class shooterCode : MonoBehaviour
     public float fireRate;
     private float fireWait;
     public float initDelay = 0f;
+    public float test;
     private float timer;
     //private GameObject[] spawners;
     // Start is called before the first frame update
@@ -27,7 +28,8 @@ public class shooterCode : MonoBehaviour
         if(timer >= fireWait)
         {
             fireWait = timer + fireRate;
-            spawner.GetComponent<SpawnerCode>().initAngle = -(rotationSpeed*timer)%360;
+            spawner.GetComponent<SpawnerCode>().initAngle = -(rotationSpeed * timer) % 360;
+            Debug.Log("init angle"+ -(rotationSpeed * timer) % 360);
             spawner.GetComponent<SpawnerCode>().fire(-1f, true);
         }
 

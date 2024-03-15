@@ -220,9 +220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1017896221}
-  rotationSpeed: 20
+  rotationSpeed: 40
   fireRate: 1
   initDelay: 0
+  test: 0
 --- !u!1001 &835191714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -461,6 +462,14 @@ PrefabInstance:
     - target: {fileID: 6340600304880723859, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340600304880723863, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
+      propertyPath: startx
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340600304880723863, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
+      propertyPath: nobullet
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723880, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: m_Name
@@ -837,6 +846,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
+      propertyPath: test
+      value: 210
+      objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715289, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -907,7 +920,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

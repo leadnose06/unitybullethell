@@ -145,7 +145,8 @@ public class SpawnerCode : MonoBehaviour
                     SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle+(360/circleBullets)*i;
                     if (face)
                     {
-                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = initAngle + (360 / circleBullets) * i;
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = -initAngle;
+                        Debug.Log("Facing angle"+ initAngle + (360 / circleBullets) * i);
                     }
                     SpawnedBullet.SetActive(true);
                 }
