@@ -161,6 +161,7 @@ public class boss3Code : MonoBehaviour
                 }
                 gapDelay = timer + 1.7f;
                 gapLength = timer + 1.5f;
+                
             }
         }
     }
