@@ -5,12 +5,22 @@ using UnityEngine;
 public class shooterCode : MonoBehaviour
 {
     public GameObject spawner;
+    public GameObject Boss;
     public float rotationSpeed;
+    public float speed;
     public float fireRate;
     private float fireWait;
     public float initDelay = 0f;
     public float test;
     private float timer;
+    public float angle;
+    public float distance = -1; 
+    private Vector3 goal;
+    
+    
+    
+    
+
     //private GameObject[] spawners;
     // Start is called before the first frame update
     void Start()
@@ -32,6 +42,11 @@ public class shooterCode : MonoBehaviour
             Debug.Log("init angle"+ -(rotationSpeed * timer) % 360);
             spawner.GetComponent<SpawnerCode>().fire(-1f, true);
         }
+        goal = Boss.transform.position;
+        if(gameObject.transform.position!=goal){
+            di
+        }
+        
 
 
     }

@@ -85,6 +85,7 @@ public class boss1Code : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
         }
     }
 
