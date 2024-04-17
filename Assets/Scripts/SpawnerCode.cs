@@ -25,7 +25,7 @@ public class SpawnerCode : MonoBehaviour
     [SerializeField] private float firingRate;
     [SerializeField] public float initAngle;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private GameObject attached;
+    [SerializeField] public GameObject attached;
     [SerializeField] public float offsetX = 0;
     [SerializeField] public float offsetY = 0;
     [SerializeField] private float maxDelay;
