@@ -12,7 +12,7 @@ public class boss4Code : MonoBehaviour
     {
         for(int a=0; a<6; a++){
             shooters[a] = Instantiate(spawnedShooter);
-            shooters[a].GetComponent<shooterCode>().angle = (2*Mathf.PI)/(a+1);
+            shooters[a].GetComponent<shooterCode>().angle = (2*Mathf.PI)/6*(1+a);
             shooters[a].GetComponent<shooterCode>().self = shooters[a];
             shooters[a].SetActive(true);
         }
@@ -26,8 +26,9 @@ public class boss4Code : MonoBehaviour
     {
         timer += Time.deltaTime;
         foreach(GameObject i in shooters){
-            i.GetComponent<shooterCode>().distance = 5*Mathf.Sin(timer*2);
-            i.GetComponent<shooterCode>().angle += ((2*Mathf.PI)*timer/20000)%(2*Mathf.PI);
+            i.GetComponent<shooterCode>().distance = 5*Mathf.Abs(Mathf.Sin(timer*2));
+            i.GetComponent<shooterCode>().angle += (15*(Mathf.PI/30))*Time.deltaTime;
+            //i.GetComponent<shooterCode>().angle
         }
     }
 }

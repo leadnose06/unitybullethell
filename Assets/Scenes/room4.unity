@@ -220,16 +220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd63ba995886e049a62f00f7b6b036a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerPattern: {fileID: 0}
+  spawnerPattern: {fileID: 1017896221}
   Boss: {fileID: 1552776545}
   rotationSpeed: 40
   setSpeed: 0
-  fireRate: 1
+  fireRate: 0.8
   initDelay: 0
   test: 0
   angle: 0
   distance: -1
-  self: {fileID: 0}
+  self: {fileID: 95442083}
 --- !u!1001 &835191714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,6 +352,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a64d1cb287275104b81176cb58734b7c, type: 3}
+--- !u!1 &1017896221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8289050700739603726, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+  m_PrefabInstance: {fileID: 1537346973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1086652743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -470,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723863, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: nobullet
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723880, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: m_Name
@@ -619,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: speed
-      value: 800
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: bullet

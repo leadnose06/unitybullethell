@@ -55,15 +55,7 @@ public class shooterCode : MonoBehaviour
         goal = Boss.transform.position;
         goal = new Vector3(goal.x+(distance*Mathf.Cos(angle)), goal.y+(distance*Mathf.Sin(angle)));
         
-        
-        targetAngle = Mathf.Atan((goal.y-gameObject.transform.position.y)/(goal.x-gameObject.transform.position.x));
-        targetDistance = (0.0001f+(goal.y-gameObject.transform.position.y)*(1/Mathf.Sin(targetAngle)));
-        if(targetDistance<=speed){
-            gameObject.transform.position = goal;
-        } else{
-            gameObject.transform.position = new Vector3(Mathf.Cos(targetAngle)*speed, Mathf.Sin(targetAngle)*speed);
-        }
-        
+        transform.position = goal;
         
 
 
