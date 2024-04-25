@@ -26,6 +26,7 @@ public class shooterCode : MonoBehaviour
     
     
     
+    
 
     //private GameObject[] spawners;
     // Start is called before the first frame update
@@ -56,6 +57,7 @@ public class shooterCode : MonoBehaviour
         goal = new Vector3(goal.x+(distance*Mathf.Cos(angle)), goal.y+(distance*Mathf.Sin(angle)));
         
         transform.position = goal;
+        
         
 
 
