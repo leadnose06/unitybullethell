@@ -16,6 +16,7 @@ public class boss4Code : MonoBehaviour
     private bool outwards;
     private bool fullOut;
     private float outTime;
+    private bool returned;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class boss4Code : MonoBehaviour
             phase2 = true;
             outwards = false;
             fullOut = false;
+            returned = false;
         }
         if(timer >= phase1Duration + phase2Duration && phase2){
             phase2 = false;
@@ -47,14 +49,18 @@ public class boss4Code : MonoBehaviour
         if(timer >= phase1Duration + phase2Duration + phase3Duration && phase3){
 
         }
-        if(phase2 && Mathf.Abs(shooters[0].GetComponent<shooterCode>().distance) <= 0.1){
+        if(phase2 && Mathf.Abs(shooters[0].GetComponent<shooterCode>().distance) <= 0.2 && !outwards){
             outwards = true;
+            returned = true;
+            outTime = timer;
+        }
+        if(returned && timer >= outTime+0.25f && Mathf.Abs(Mathf.Sin(timer))<=0.05){
+            returned = false;
         }
         if(phase2 && outwards && 20*Mathf.Abs(Mathf.Sin((timer)%(2*Mathf.PI))) >= 19.9 &! fullOut){
             foreach(GameObject i in shooters){
                 i.GetComponent<shooterCode>().distance = 20;
             }
-            outTime = timer;
             fullOut = true;
         }
         if(fullOut && 20*Mathf.Abs(Mathf.Sin((timer)%(2*Mathf.PI))) >= 19.9){
@@ -62,14 +68,12 @@ public class boss4Code : MonoBehaviour
             outwards = false;
         }
         foreach(GameObject i in shooters){
-            if(phase2 && outwards &! fullOut){
-                i.GetComponent<shooterCode>().distance = 20*Mathf.Abs(Mathf.Sin((timer)%(2*Mathf.PI)));
-            } else if(phase2 &! fullOut){
+            if(phase2 && returned){
                 i.GetComponent<shooterCode>().distance = 20*Mathf.Abs(Mathf.Sin((timer)%(2*Mathf.PI)));
             } else if(!fullOut){
                 i.GetComponent<shooterCode>().distance = 3*Mathf.Abs(Mathf.Sin((timer*2)%(2*Mathf.PI)));
             }
-            if(phase2){
+            if(phase2 && outwards){
                 i.GetComponent<shooterCode>().angle += (60*(Mathf.PI/30))*Time.deltaTime;
             } else{
                 i.GetComponent<shooterCode>().angle += (15*(Mathf.PI/30))*Time.deltaTime;
