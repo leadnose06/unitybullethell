@@ -17,6 +17,7 @@ public class boss4Code : MonoBehaviour
     private bool fullOut;
     private float outTime;
     private bool returned;
+    private Vector3 goal;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +43,14 @@ public class boss4Code : MonoBehaviour
             fullOut = false;
             returned = false;
         }
-        if(timer >= phase1Duration + phase2Duration && phase2){
+        if(timer >= phase1Duration + phase2Duration && phase2 && Mathf.Cos((timer)%(2*Mathf.PI))<=0.1){
             phase2 = false;
             phase3 = true;
+            foreach(GameObject i in shooters){
+                i.GetComponent<shooterCode>().goalSet = true;
+                i.GetComponent<shooterCode>().fireRate = 0.7f;
+            }
+            goal = new Vector3(Mathf.Cos((timer*2)%(2*Mathf.PI)), Mathf.Sin((timer*2)%(2*Mathf.PI)));
         }
         if(timer >= phase1Duration + phase2Duration + phase3Duration && phase3){
 
@@ -75,10 +81,20 @@ public class boss4Code : MonoBehaviour
             }
             if(phase2 && outwards){
                 i.GetComponent<shooterCode>().angle += (60*(Mathf.PI/30))*Time.deltaTime;
-            } else{
-                i.GetComponent<shooterCode>().angle += (15*(Mathf.PI/30))*Time.deltaTime;
+            } else if(phase3)
+            {   
+                i.GetComponent<shooterCode>().angle += (50*(Mathf.PI/30))*Time.deltaTime;
+            }else{
+                i.GetComponent<shooterCode>().angle += (10*(Mathf.PI/30))*Time.deltaTime;
             }
         }
+        if(phase3){
+            goal = new Vector3(5*Mathf.Cos((timer*4)%(2*Mathf.PI)), 5*Mathf.Sin((timer*4)%(2*Mathf.PI)));
+            foreach(GameObject i in shooters){
+                i.GetComponent<shooterCode>().goal = goal;
+            }
+        }
+        
 
     }
 }

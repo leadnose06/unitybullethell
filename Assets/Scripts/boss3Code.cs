@@ -164,6 +164,12 @@ public class boss3Code : MonoBehaviour
                 
             }
         }
+        if(phase3 && timer >= phase3Duration){
+
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            SceneManager.LoadScene(4);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(4));
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

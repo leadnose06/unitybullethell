@@ -17,10 +17,11 @@ public class shooterCode : MonoBehaviour
     private float timer;
     public float angle;
     public float distance; 
-    private Vector3 goal;
+    public Vector3 goal;
     private float targetAngle;
     private float targetDistance;
     public GameObject self;
+    public bool goalSet = false;
     
     
     
@@ -53,7 +54,9 @@ public class shooterCode : MonoBehaviour
             Debug.Log("init angle"+ -(rotationSpeed * timer) % 360);
             spawner.GetComponent<SpawnerCode>().fire(-1f, true);
         }
-        goal = Boss.transform.position;
+        if(!goalSet){
+           goal = Boss.transform.position;
+        }
         goal = new Vector3(goal.x+(distance*Mathf.Cos(angle)), goal.y+(distance*Mathf.Sin(angle)));
         
         transform.position = goal;
@@ -62,4 +65,6 @@ public class shooterCode : MonoBehaviour
 
 
     }
+
+    
 }
