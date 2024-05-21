@@ -30,11 +30,11 @@ public class lockedAngleBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }
