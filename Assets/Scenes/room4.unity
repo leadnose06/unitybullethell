@@ -230,6 +230,7 @@ MonoBehaviour:
   test: 0
   angle: 0
   distance: -1
+  goal: {x: 0, y: 0, z: 0}
   self: {fileID: 95442083}
   goalSet: 0
 --- !u!60 &95442087
@@ -777,8 +778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedShooter: {fileID: 95442083}
   phase1Duration: 2
-  phase2Duration: 20
-  phase3Duration: 10
+  phase2Duration: 2
+  phase3Duration: 20
 --- !u!212 &1552776547
 SpriteRenderer:
   m_ObjectHideFlags: 0
