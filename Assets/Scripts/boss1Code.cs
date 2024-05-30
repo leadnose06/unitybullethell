@@ -74,7 +74,6 @@ public class boss1Code : MonoBehaviour
     private void phase2Move()
     {
         bossTargetAngle = Mathf.Atan2((gameObject.transform.position.y - player.transform.position.y), (gameObject.transform.position.x - player.transform.position.x));
-        Debug.Log(Mathf.Rad2Deg*bossTargetAngle);
         vx = Mathf.Cos(bossTargetAngle);
         vy = Mathf.Sin(bossTargetAngle);
         boss1.velocity = new Vector2(speed * -vx, speed * -vy);

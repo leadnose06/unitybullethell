@@ -22,6 +22,7 @@ public class shooterCode : MonoBehaviour
     private float targetDistance;
     public GameObject self;
     public bool goalSet = false;
+    public bool shooting = true;
     
     
     
@@ -51,8 +52,10 @@ public class shooterCode : MonoBehaviour
         {
             fireWait = timer + fireRate;
             spawner.GetComponent<SpawnerCode>().initAngle = -(rotationSpeed * timer) % 360;
-            Debug.Log("init angle"+ -(rotationSpeed * timer) % 360);
-            spawner.GetComponent<SpawnerCode>().fire(-1f, true);
+            if(shooting)
+            {
+                spawner.GetComponent<SpawnerCode>().fire(-1f, true);
+            }
         }
         if(!goalSet){
            goal = Boss.transform.position;

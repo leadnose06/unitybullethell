@@ -12,14 +12,16 @@ public class lockedAngleBullet : MonoBehaviour
     public float test;
     public float maxH = 20f;
     public float maxV = 11.5f;
+    public double time;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
         movement = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle));
         gameObject.transform.eulerAngles = new Vector3(0, 0, facing);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -27,7 +29,7 @@ public class lockedAngleBullet : MonoBehaviour
         transform.position += (movement* speed * Time.deltaTime);
         if(transform.position.x <= -maxH || transform.position.x >= maxH || transform.position.y <= -maxV || transform.position.y >= maxV)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
     /*private void OnCollisionEnter(Collision collision)

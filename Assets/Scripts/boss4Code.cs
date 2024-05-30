@@ -25,6 +25,11 @@ public class boss4Code : MonoBehaviour
             shooters[a] = Instantiate(spawnedShooter);
             shooters[a].GetComponent<shooterCode>().angle = (2*Mathf.PI)/6*(1+a);
             shooters[a].GetComponent<shooterCode>().self = shooters[a];
+            if(a>=6){
+                shooters[a].GetComponent<shooterCode>().shooting = false;
+            } else{
+                shooters[a].GetComponent<shooterCode>().shooting = true;
+            }
             shooters[a].SetActive(true);
         }
     }
@@ -45,7 +50,8 @@ public class boss4Code : MonoBehaviour
             phase3 = true;
             foreach(GameObject i in shooters){
                 i.GetComponent<shooterCode>().goalSet = true;
-                i.GetComponent<shooterCode>().fireRate = 1.1f;
+                i.GetComponent<shooterCode>().fireRate = 1.3f;
+                i.GetComponent<shooterCode>().shooting = true;
             }
             goal = new Vector3(Mathf.Cos((timer*2)%(2*Mathf.PI)), Mathf.Sin((timer*2)%(2*Mathf.PI)));
         }

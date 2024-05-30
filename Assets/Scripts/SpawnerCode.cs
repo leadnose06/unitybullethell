@@ -105,58 +105,86 @@ public class SpawnerCode : MonoBehaviour
         {
             if (lockedAngle && spawnerType == SpawnerType.Straight)
             {
-                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
-                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
-                if (face)
+                SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
+                if(SpawnedBullet != null)
                 {
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().facing = initAngle;
+                    //Debug.Log(this.gameObject.name);
+                    SpawnedBullet.transform.position = transform.position;
+                    SpawnedBullet.transform.rotation = Quaternion.identity;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
+                    if (face)
+                    {
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = initAngle;
+                    }
+                    SpawnedBullet.SetActive(true);
                 }
-                SpawnedBullet.SetActive(true);
             }
             else if (lockedAngle && spawnerType == SpawnerType.Spin)
             {
-                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
-                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360 * fullTimer);
-                if (face)
+                SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
+                if(SpawnedBullet != null)
                 {
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().facing = (360 * fullTimer);
+                    SpawnedBullet.transform.position = transform.position;
+                    SpawnedBullet.transform.rotation = Quaternion.identity;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().angle = (360 * fullTimer);
+                    if (face)
+                    {
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = (360 * fullTimer);
+                    }
+                    SpawnedBullet.SetActive(true);
                 }
-                SpawnedBullet.SetActive(true);
             }
             else if (lockedAngle && spawnerType == SpawnerType.Target)
             {
-                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
-                SpawnedBullet.GetComponent<lockedAngleBullet>().angle = attached.GetComponent<boss1Code>().bossTargetAngle;
-                if (face)
+                SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
+                if(SpawnedBullet != null)
                 {
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().facing = attached.GetComponent<boss1Code>().bossTargetAngle;
+                    SpawnedBullet.transform.position = transform.position;
+                    SpawnedBullet.transform.rotation = Quaternion.identity;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
+                    SpawnedBullet.GetComponent<lockedAngleBullet>().angle = attached.GetComponent<boss1Code>().bossTargetAngle;
+                    if (face)
+                    {
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = attached.GetComponent<boss1Code>().bossTargetAngle;
+                    }
+                    SpawnedBullet.SetActive(true);
                 }
-                SpawnedBullet.SetActive(true);
             }
             else if (lockedAngle && spawnerType == SpawnerType.Circle)
             {
                 for(int i=0; i<circleBullets; i++) 
                 {
-                    SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
-                    SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle+(360/circleBullets)*i;
-                    if (face)
+                    SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
+                    if(SpawnedBullet != null)
                     {
-                        SpawnedBullet.GetComponent<lockedAngleBullet>().facing = -initAngle;
-                        Debug.Log("Facing angle"+ initAngle + (360 / circleBullets) * i);
+                        SpawnedBullet.transform.position = transform.position;
+                        SpawnedBullet.transform.rotation = Quaternion.identity;
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle+(360/circleBullets)*i;
+                        if (face)
+                        {
+                            SpawnedBullet.GetComponent<lockedAngleBullet>().facing = -initAngle;
+                        }
+                        SpawnedBullet.SetActive(true);
                     }
-                    SpawnedBullet.SetActive(true);
                 }
             }
             else
             {
-                SpawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                SpawnedBullet.GetComponent<BulletCode>().speed = spd / -100;
-                SpawnedBullet.transform.rotation = transform.rotation;
-                SpawnedBullet.SetActive(true);
+                SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
+                if(SpawnedBullet != null)
+                {
+                    SpawnedBullet.transform.position = transform.position;
+                    SpawnedBullet.transform.rotation = Quaternion.identity;
+                    SpawnedBullet.GetComponent<BulletCode>().speed = spd / -100;
+                    SpawnedBullet.transform.rotation = transform.rotation;
+                    SpawnedBullet.SetActive(true);
+                }
+            }
+            if(SpawnedBullet == null){
+                Debug.Log("increase");
             }
         }
     }
