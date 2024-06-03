@@ -778,8 +778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedShooter: {fileID: 95442083}
-  phase1Duration: 1
-  phase2Duration: 1
+  phase1Duration: 12
+  phase2Duration: 10
   phase3Duration: 20
 --- !u!212 &1552776547
 SpriteRenderer:

@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Enemy") && !immune)
+        if ((collision.gameObject.tag == "Bullet" && !immune)|| collision.gameObject.tag == "Enemy")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
