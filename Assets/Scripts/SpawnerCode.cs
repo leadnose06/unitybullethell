@@ -108,7 +108,6 @@ public class SpawnerCode : MonoBehaviour
                 SpawnedBullet = ObjectPool.SharedInstance.GetPooledObject();
                 if(SpawnedBullet != null)
                 {
-                    //Debug.Log(this.gameObject.name);
                     SpawnedBullet.transform.position = transform.position;
                     SpawnedBullet.transform.rotation = Quaternion.identity;
                     SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;

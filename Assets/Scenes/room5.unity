@@ -728,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7277184873940342747, guid: f43b543aee6e74ac2b22c27681d60df6, type: 3}
       propertyPath: amountToPool
-      value: 80
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7277184873940342747, guid: f43b543aee6e74ac2b22c27681d60df6, type: 3}
       propertyPath: objectToPool
@@ -781,6 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPattern: {fileID: 1704077819}
+  phase1Duration: 20
+  phase2Duration: 40
 --- !u!1001 &751207486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -940,11 +942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: maxH
-      value: 22
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715287, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: maxV
-      value: 12.5
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 4411567981211715289, guid: cdc12cf71b68b034ba38ab947e095094, type: 3}
       propertyPath: m_RootOrder
@@ -1179,6 +1181,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1113214217}
+    - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
+      propertyPath: triggered
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8289050700739603727, guid: bd032e85df8579f4984a1302961564dd, type: 3}
       propertyPath: lockedAngle
       value: 1
