@@ -95,7 +95,7 @@ public class SpawnerCode : MonoBehaviour
         }
     }
 
-    public void fire(float spd = -1f, bool face = false)
+    public void fire(float spd = -1f, bool face = false, float end = -1f)
     {
         if(spd == -1f)
         {
@@ -112,6 +112,9 @@ public class SpawnerCode : MonoBehaviour
                     SpawnedBullet.transform.rotation = Quaternion.identity;
                     SpawnedBullet.GetComponent<lockedAngleBullet>().speed = spd / -100;
                     SpawnedBullet.GetComponent<lockedAngleBullet>().angle = initAngle;
+                    if(end != -1f){
+                        SpawnedBullet.GetComponent<lockedAngleBullet>().endDist = end;
+                    }
                     if (face)
                     {
                         SpawnedBullet.GetComponent<lockedAngleBullet>().facing = initAngle;

@@ -728,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7277184873940342747, guid: f43b543aee6e74ac2b22c27681d60df6, type: 3}
       propertyPath: amountToPool
-      value: 600
+      value: 1800
       objectReference: {fileID: 0}
     - target: {fileID: 7277184873940342747, guid: f43b543aee6e74ac2b22c27681d60df6, type: 3}
       propertyPath: objectToPool
@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPattern: {fileID: 1704077819}
-  phase1Duration: 20
-  phase2Duration: 40
+  phase1Duration: 10
+  phase2Duration: 20
 --- !u!1001 &751207486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723863, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: nobullet
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723880, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: m_Name

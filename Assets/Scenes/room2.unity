@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723863, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: nobullet
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6340600304880723880, guid: 2dfcf4929ad05da4b8e352d853617182, type: 3}
       propertyPath: m_Name
@@ -397,7 +397,7 @@ MonoBehaviour:
   - {fileID: 1019219454}
   phase1Duration: 10
   phase2Duration: 20
-  phase3Duration: 30
+  phase3Duration: 35
   phase2RingFireRate: 3.4
   phase3SpamDuration: 3
 --- !u!1001 &661327862

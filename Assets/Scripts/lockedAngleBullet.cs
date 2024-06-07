@@ -13,8 +13,8 @@ public class lockedAngleBullet : MonoBehaviour
     public float maxH = 20f;
     public float maxV = 11.5f;
     public double time;
-    public double endDist = 1000;
-    private double currentDist = 0;
+    public float endDist = 1000;
+    public float currentDist = 0;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -24,18 +24,23 @@ public class lockedAngleBullet : MonoBehaviour
         gameObject.transform.eulerAngles = new Vector3(0, 0, facing);
         currentDist = 0;
     }
+    void onDisable(){
+        endDist = 1000;
+    }
 
 
     // Update is called once per frame
     void Update()
     {
         transform.position += (movement* speed * Time.deltaTime);
-        currentDist += speed*Time.deltaTime;
+        currentDist += Mathf.Abs(speed)*Time.deltaTime;
         if(currentDist >= endDist){
+            endDist = 1000;
             this.gameObject.SetActive(false);
         }
         if(transform.position.x <= -maxH || transform.position.x >= maxH || transform.position.y <= -maxV || transform.position.y >= maxV)
         {
+            endDist = 1000;
             this.gameObject.SetActive(false);
         }
     }
